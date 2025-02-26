@@ -1,87 +1,98 @@
-(function($) {
-	"use strict";
+document.addEventListener('DOMContentLoaded', function () {
+	// About Section Toggle
+	const aboutText = document.querySelector('.about-text');
+	const aboutClose = document.querySelector('.about-close');
+	const aboutSection = document.querySelector('.about-section');
   
-	// Fade-in effect on scroll
-	$(window).on("scroll", function() {
-	  $(".fade-in").each(function() {
-		var position = $(this).offset().top;
-		var scroll = $(window).scrollTop();
-		var windowHeight = $(window).height();
-  
-		if (scroll > position - windowHeight + 100) {
-		  $(this).addClass("visible");
-		}
+	if (aboutText && aboutClose && aboutSection) {
+	  aboutText.addEventListener('click', () => {
+		aboutSection.style.transform = 'translateX(0)';
+		aboutSection.style.opacity = '1';
+		aboutSection.style.visibility = 'visible';
+		aboutSection.style.overflowY = 'auto';
 	  });
-	});
   
-	// About Section Animation
-	$(".about-text").on("click", function() {
-	  $("body").addClass("about-on");
-	  $(".about-section").fadeIn(500);
-	});
+	  aboutClose.addEventListener('click', () => {
+		aboutSection.style.transform = 'translateX(-100%)';
+		aboutSection.style.opacity = '0';
+		aboutSection.style.visibility = 'hidden';
+		aboutSection.style.overflowY = 'hidden';
+	  });
+	} else {
+	  console.error('One or more elements for the About section are missing in the DOM.');
+	}
   
-	$(".about-close").on("click", function() {
-	  $("body").removeClass("about-on");
-	  $(".about-section").fadeOut(500);
-	});
+	// Contact Section Toggle
+	const contactText = document.querySelector('.contact-text');
+	const contactClose = document.querySelector('.contact-close');
+	const contactSection = document.querySelector('.contact-section');
   
-	// Contact Section Animation
-	$(".contact-text").on("click", function() {
-	  $("body").addClass("contact-on");
-	  $(".contact-section").fadeIn(500);
-	});
+	if (contactText && contactClose && contactSection) {
+	  contactText.addEventListener('click', () => {
+		contactSection.style.transform = 'translateX(0)';
+		contactSection.style.opacity = '1';
+		contactSection.style.visibility = 'visible';
+		contactSection.style.overflowY = 'auto';
+	  });
   
-	$(".contact-close").on("click", function() {
-	  $("body").removeClass("contact-on");
-	  $(".contact-section").fadeOut(500);
-	});
+	  contactClose.addEventListener('click', () => {
+		contactSection.style.transform = 'translateX(100%)';
+		contactSection.style.opacity = '0';
+		contactSection.style.visibility = 'hidden';
+		contactSection.style.overflowY = 'hidden';
+	  });
+	} else {
+	  console.error('One or more elements for the Contact section are missing in the DOM.');
+	}
   
-  })(jQuery);
+	// Services Section Toggle
+	const servicesText = document.querySelector('.services1');
+	const servicesClose = document.querySelector('.services1-close');
+	const servicesSection = document.querySelector('.services1-section');
   
-
-(function($) {
-	"use strict";
+	if (servicesText && servicesClose && servicesSection) {
+	  servicesText.addEventListener('click', () => {
+		servicesSection.style.top = '0';
+	  });
   
-	// About page
-	$(".about-text").on('click', () => $("body").addClass("about-on"));
-	$(".about-close").on('click', () => $("body").removeClass("about-on"));
+	  servicesClose.addEventListener('click', () => {
+		servicesSection.style.top = '100%';
+	  });
+	} else {
+	  console.error('One or more elements for the Services section are missing in the DOM.');
+	}
   
-	// Contact page
-	$(".contact-text").on('click', () => $("body").addClass("contact-on"));
-	$(".contact-close").on('click', () => $("body").removeClass("contact-on"));
+	// Blog Section Toggle
+	const blogText = document.querySelector('.blog');
+	const blogClose = document.querySelector('.blog-close');
+	const blogSection = document.querySelector('.blog-section');
   
-	// services1 portfolio page
-	$(".services1").on('click', () => $("body").addClass("services1-on"));
-	$(".services1-close").on('click', () => $("body").removeClass("services1-on"));
+	if (blogText && blogClose && blogSection) {
+	  blogText.addEventListener('click', () => {
+		blogSection.style.top = '0';
+	  });
   
-	// blog portfolio page
-	$(".blog").on('click', () => $("body").addClass("blog-on"));
-	$(".blog-close").on('click', () => $("body").removeClass("blog-on"));
+	  blogClose.addEventListener('click', () => {
+		blogSection.style.top = '100%';
+	  });
+	} else {
+	  console.error('One or more elements for the Blog section are missing in the DOM.');
+	}
   
-	// tech portfolio page
-	$(".tech").on('click', () => $("body").addClass("tech-on"));
-	$(".tech-close").on('click', () => $("body").removeClass("tech-on"));
-  })(jQuery);
-
+	// Tech Stack Section Toggle
+	const techText = document.querySelector('.tech');
+	const techClose = document.querySelector('.tech-close');
+	const techSection = document.querySelector('.tech-section');
   
-  $(document).ready(function () {
-    // Open About Section
-    $(".about-text").on("click", function () {
-        $(".about-section").css({
-            transform: "translateX(0)",
-            opacity: "1",
-            visibility: "visible",
-            overflowY: "auto" // Allow scrolling when opened
-        }).scrollTop(0); // Reset scroll position when opening
-    });
-
-    // Close About Section
-    $(".about-close").on("click", function () {
-        $(".about-section").css({
-            transform: "translateX(-100%)",
-            opacity: "0",
-            visibility: "hidden",
-            overflowY: "hidden" // Prevent scroll when closed
-        });
-    });
-});
+	if (techText && techClose && techSection) {
+	  techText.addEventListener('click', () => {
+		techSection.style.top = '0';
+	  });
+  
+	  techClose.addEventListener('click', () => {
+		techSection.style.top = '100%';
+	  });
+	} else {
+	  console.error('One or more elements for the Tech Stack section are missing in the DOM.');
+	}
+  });
