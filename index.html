@@ -5,6 +5,10 @@
   <title>My Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#8e44ad">
+
 
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +22,7 @@
 </head>
 <body>
   <!-- Hero Section -->
+   
   <div class="hero-section">
     <div class="about-text hover-target">About Me</div>
     <div class="contact-text hover-target">Contact</div>
@@ -30,14 +35,15 @@
                     <div class="hero-content">
                         <h1 class="fadeIn">Hi, I'm <span class="highlight">Edwin Luke</span></h1>
                         <h3 class="fadeIn delay-1">A Creative <span class="highlight">Web Developer</span></h3>
-                        <p class="fadeIn delay-2">I design & develop engaging digital experiences.</p>
+                        <p class="fadeIn delay-2">I design & develop engaging digital experiences.
+							</p>
                         <a href="work.html" class="btn-glass fadeIn delay-3">View My Work</a>
                     </div>
                 </div>
                 <!-- Profile Image -->
                 <div class="col-md-6 text-center">
                     <div class="hero-image">
-                        <img src="./images/profile (1).jfif" alt="Edwin Luke">
+                        <img src="./images/profile (1).jfif" alt="Edwin Luke" loading="lazy" >
                     </div>
                 </div>
             </div>
@@ -55,60 +61,60 @@
 
 
   <!-- About Section -->
-  <div id="about" class="about-section">
-    <div class="about-close hover-target"></div> <!-- Close button moved up -->
-    <div class="section-center">
-        <div class="container">
-            <!-- About Content -->
-            <div class="abt-content abt-animated abt-fadeInUp">
-                <div class="abt-profile-pic">
-                    <img src="./images/profile (1).jfif" alt="Profile Picture">
-                </div>
-                <div class="abt-bio">
-                    <h2>About Me</h2>
-                    <p>
-                        I'm Edwin Luke, a <span class="highlight">Full Stack Developer</span> with expertise in modern web technologies.
-                        I specialize in building scalable applications using frameworks like <strong>React</strong>, <strong>Node.js</strong>, and <strong>Django</strong>.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Skills Section -->
-            <div class="abt-skills abt-animated abt-fadeInUp" style="animation-delay: 0.5s;">
-                <h3>My Skills</h3>
-                <ul class="skills-grid">
-                    <li>HTML & CSS</li>
-                    <li>JavaScript & PHP</li>
-                    <li>React / Angular</li>
-                    <li>Node.js & Express</li>
-                    <li>Python & Django</li>
-                    <li>SQL & NoSQL Databases</li>
-                    <li>Cloud Services</li>
-                </ul>
-            </div>
-
-            <!-- Experience / Timeline -->
-            <div class="abt-timeline abt-animated abt-fadeInUp" style="animation-delay: 1s;">
-                <h3>Experience</h3>
-                <div class="abt-timeline-item">
-                    <div class="abt-year">2021</div>
-                    <div class="abt-detail">Started as a front-end developer.</div>
-                </div>
-                <div class="abt-timeline-item">
-                    <div class="abt-year">2022</div>
-                    <div class="abt-detail">Expanded into full stack development.</div>
-                </div>
-                <div class="abt-timeline-item">
-                    <div class="abt-year">2023</div>
-                    <div class="abt-detail">Worked at a startup, developing scalable solutions.</div>
-                </div>
-                <div class="abt-timeline-item">
-                    <div class="abt-year">2024</div>
-                    <div class="abt-detail">Launching my own consultancy firm.</div>
-                </div>
-            </div>
+ <div id="about" class="about-section">
+  <div class="about-close hover-target"></div>
+  <div class="section-center">
+    <div class="container">
+      <!-- About Content -->
+      <div class="abt-content abt-animated abt-fadeInUp">
+        <div class="abt-profile-pic">
+          <img src="./images/profile (1).jfif" alt="Profile Picture">
         </div>
+        <div class="abt-bio">
+          <h2>About Me</h2>
+          <p>
+            I'm Edwin Luke, a <span class="highlight">Full Stack Developer</span> with expertise in modern web technologies.
+            I specialize in building scalable applications using frameworks like <strong>React</strong>, <strong>Node.js</strong>, and <strong>Django</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="abt-skills abt-animated abt-fadeInUp" style="animation-delay: 0.5s;">
+        <h3>My Skills</h3>
+        <ul class="skills-grid">
+          <li>HTML & CSS</li>
+          <li>JavaScript & PHP</li>
+          <li>React / Angular</li>
+          <li>Node.js & Express</li>
+          <li>Python & Django</li>
+          <li>SQL & NoSQL Databases</li>
+          <li>Cloud Services</li>
+        </ul>
+      </div>
+
+      <!-- Experience / Timeline -->
+      <div class="abt-timeline abt-animated abt-fadeInUp" style="animation-delay: 1s;">
+        <h3>Experience</h3>
+        <div class="abt-timeline-item">
+          <div class="abt-year">2021</div>
+          <div class="abt-detail">Started as a front-end developer.</div>
+        </div>
+        <div class="abt-timeline-item">
+          <div class="abt-year">2022</div>
+          <div class="abt-detail">Expanded into full stack development.</div>
+        </div>
+        <div class="abt-timeline-item">
+          <div class="abt-year">2023</div>
+          <div class="abt-detail">Worked at a startup, developing scalable solutions.</div>
+        </div>
+        <div class="abt-timeline-item">
+          <div class="abt-year">2024</div>
+          <div class="abt-detail">Launching my own consultancy firm.</div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -122,51 +128,66 @@
 		<div class="contact-form-container">
 			<h2>Contact Me</h2>
 			<form class="contact-form" id="form">
-			  <input type="text" id="fullName" name="fullName" placeholder="Your FullName" aria-describedby="fullNameHelp" required>
-			  <input type="email" id="email" name="email" placeholder="Your Email" required>
-			  <input type="phone" id="phone" name="phone" placeholder="Phone Number" required>
-			  <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-			  <button type="submit" id="button">Send Message</button>
-			</form>
+				<input type="text" id="fullName" name="fullName" placeholder="Your Full Name" aria-describedby="fullNameHelp" required autocomplete="name">
+				<input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email">
+				<input type="tel" id="phone" name="phone" placeholder="Phone Number" required autocomplete="tel">
+				<textarea id="message" name="message" rows="5" placeholder="Your Message" required autocomplete="off"></textarea>
+				<button type="submit" id="button" aria-label="Submit Inquiry">Submit Inquiry</button>
+			  </form>
+			  
 		  </div>
 		  
 	  </div>
 	</div>
   </div>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-	emailjs.init('_ivRMPZ1Vb4rcUZCD');
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Include EmailJS & SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  // Initialize EmailJS
+  emailjs.init('_ivRMPZ1Vb4rcUZCD');
+
+  const btn = document.getElementById('button');
   
-	const btn = document.getElementById('button');
+  document.getElementById('form').addEventListener('submit', function (event) {
+    event.preventDefault();
   
-	document.getElementById('form').addEventListener('submit', function(event) {
-	  event.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
   
-	  btn.textContent = 'Sending...';
-  
-	  const serviceID = 'default_service';
-	  const templateID = 'template_2x5ihom';
-  
-	  emailjs.sendForm(serviceID, templateID, this)
-		.then(() => {
-		  btn.textContent = 'Submit Inquiry';
-		  alert('Your consultation request has been sent successfully!');
-  
-		  // ✅ Reset the form fields
-		  form.reset();
-  
-		  // ✅ Refresh the page after 1 second delay
-		  setTimeout(() => {
-			location.reload();
-		  }, 1000); // Adjust the delay if needed
-  
-		}, (err) => {
-		  btn.textContent = 'Submit Inquiry';
-		  alert('Failed to send. Please try again later.\n' + JSON.stringify(err));
-		});
-	});
-  </script>
-  
+    emailjs.sendForm('default_service', 'template_2x5ihom', this)
+      .then(() => {
+        btn.textContent = 'Submit Inquiry';
+        btn.disabled = false;
+        
+        // Success Alert
+        Swal.fire({
+          icon: 'success',
+          title: 'Sent Successfully!',
+          text: 'Your consultation request has been sent successfully.',
+          confirmButtonColor: '#8e44ad',
+        });
+
+        this.reset(); // Reset the form
+      })
+      .catch((err) => {
+        btn.textContent = 'Submit Inquiry';
+        btn.disabled = false;
+
+        // Error Alert
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: 'Failed to send. Please try again later.\nError: ' + err.message,
+          confirmButtonColor: '#c0392b',
+        });
+      });
+  });
+</script>
+
 
   <!-- services1 Section -->
   <div class="services1-section">  
@@ -291,7 +312,7 @@
 		  </div>
 		</article>
 		<article class="blog-card">
-		  <div class="blog-image" style="background-image: url('images/image2.jfif');"></div>
+		  <div class="blog-image" style="background-image: url('images/image2.jfif');"  loading="lazy"></div>
 		  <div class="blog-content">
 			<h3>The Beauty of tech</h3>
 			<p>Discover the wonders of tech and how it influences our well-being.</p>
