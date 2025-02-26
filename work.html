@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(45deg, #a7a7d6, #695d68);
+            color: #333;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 40px;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+            
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease-in-out;
+        }
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .work-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+            text-align: center;
+            perspective: 1000px;
+        }
+        .work-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .work-item img {
+            width: 100%; /* Make sure the width adjusts to the container */
+            height: 400px; /* Set a fixed height */
+            object-fit: cover; /* Ensures images maintain aspect ratio and fill the area */
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .work-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .work-item:hover img {
+            transform: rotateX(10deg) rotateY(10deg) scale(1.1);
+        }
+        .work-item h3 {
+            margin: 10px 0;
+        }
+        .work-item p {
+            font-size: 14px;
+            color: #666;
+        }
+        .visit-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #8e44ad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .visit-button:hover {
+            background: #732d91;
+        }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 15px;
+            background: #89e70d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .close-button:hover {
+            background: #a83226;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="close-button" onclick="goHome()">&larr; Home</button>
+        <h1>My Work</h1>
+        <div class="work-grid" id="workGrid"></div>
+    </div>
+    <script>
+        const projects = [
+        { title: "Arthur Marcus Trading", img: "images/arthur marcus.png", desc: "A modern and sleek portfolio for a construction company.", link: "https://www.arthur-marcus.com/" },
+            { title: "East Africa Packaging Hub", img: "images/Eastafrica.png", desc: "A fully functional e-commerce platform.", link: "#" },
+            { title: "Cipher Movies", img: "images/movie.png", desc: "A custom-built site for a movie site ", link: "#" },
+            { title: "HR consultancy Firm", img: "images/hr.png", desc: "A high-converting business landing page.", link: "#" },
+            { title: "G.FOX Limited", img: "images/gfox.png", desc: "A dynamic website for a supplying company.", link: "https://gfox.co.za/" },
+            { title: "RED DOT Company", img: "images/reddot.png", desc: "A platform for a Distribution comapny.", link: "https://www.reddotdistribution.com/" },
+             ];
+        
+        const workGrid = document.getElementById("workGrid");
+        projects.forEach((project, index) => {
+            const item = document.createElement("div");
+            item.classList.add("work-item");
+            item.style.animationDelay = `${index * 0.2}s`;
+            item.innerHTML = `
+                <img src="${project.img}" alt="${project.title}">
+                <h3>${project.title}</h3>
+                <p>${project.desc}</p>
+                <a href="${project.link}" class="visit-button" target="_blank">Visit Site</a>
+            `;
+            workGrid.appendChild(item);
+        });
+        
+        function goHome() {
+            window.location.href = "index.html"; // Change this to your actual home page URL
+        }
+    </script>
+</body>
+</html>
