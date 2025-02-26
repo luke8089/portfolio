@@ -1,16 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 html {
-	scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-snap-align: start;
+}
+  :root {
+    --primary-color: #8e44ad;
+    --secondary-color: #ffcc00;
+    --background-color: #1f2029;
+    --text-color: #fff;
   }
-
-
+  
+  .btn-glass {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  }
+  .dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+  }
 /* Base styles */
 body {
   font-family: 'Poppins', Arial, sans-serif;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.6;
-  color: #fff;
-  background-color: #1f2029;
+  color: var(--text-color);
+  background-color: var(--background-color);
   overflow: hidden;
   height: 100vh;
   transition: all 300ms linear;
@@ -152,7 +170,7 @@ a:hover {
   
   /* Hero Text Animations */
   .hero-content h1 {
-	font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
 	font-weight: bold;
 	color: white;
 	opacity: 0;
@@ -160,7 +178,7 @@ a:hover {
   }
   
   .hero-content h3 {
-	font-size: 1.8rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
 	color: #ffcc00;
 	opacity: 0;
 	animation: fadeIn 0.6s ease-in-out 0.6s forwards; /* Faster */
@@ -176,11 +194,11 @@ a:hover {
   /* Glass Button */
   .btn-glass {
 	display: inline-block;
-	background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(45deg, #60608b, #dd7de6);
 	padding: 12px 24px;
 	border-radius: 30px;
 	font-weight: 600;
-	color: var(--white);
+	color: black;
 	transition: all 0.3s;
 	border: 2px solid rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(5px);
@@ -256,6 +274,7 @@ a:hover {
   top: 10%;
   transform: translateY(-60%);
   transition: all 200ms linear;
+
 }
 .about-text:before {
   position: absolute;
@@ -284,6 +303,43 @@ a:hover {
 	opacity: 0.8;
   }
 
+  @media (max-width: 767px) {
+    .about-text {
+      top: 10%; /* Move it higher to avoid collision */
+      left: 10px; /* Adjust left positioning */
+      font-size: 12px; /* Slightly smaller font */
+    }
+  
+    .hero-content {
+      margin-top: 40px; /* Add margin to push content down */
+    }
+  
+    .hero-section {
+      padding-top: 60px; /* Add padding to the top of the hero section */
+    }
+  }
+  
+  /* Further adjustments for very small screens */
+  @media (max-width: 480px) {
+    .about-text {
+      top: 8%; /* Move it even higher */
+      left: 5px; /* Adjust left positioning */
+      font-size: 12px; /* Smaller font */
+    }
+    .contact-text {
+      font-size: 12px;
+      top: 10px;
+    }
+    .hero-content {
+      margin-top: 30px; /* Reduce margin for very small screens */
+    }
+  
+    .hero-section {
+      padding-top: 50px; /* Reduce padding for very small screens */
+    }
+  }
+  
+
 
 
 
@@ -301,173 +357,192 @@ a:hover {
   z-index: 10;
   opacity: 0;
   overflow-y: auto;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   padding: 50px 15px;
   top: 0;
   transition: all 300ms linear;
- 
 }
 
-/* Custom Scrollbar (Chrome, Edge) */
-.about-section::-webkit-scrollbar {
-  width: 8px;
+/* About Content Layout */
+.about-section .abt-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.about-section::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+/* Profile Picture */
+.about-section .abt-profile-pic {
+  flex: 0 0 180px;
+  margin-right: 30px;
+  border-radius: 10%;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.about-section::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  transition: background 0.3s;
+.about-section .abt-profile-pic img {
+  width: 100%;
+  display: block;
+  border-radius: 10%;
 }
 
-.about-section::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* Custom Scrollbar (Firefox) */
-.about-section {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
-}
-
-
-/* Unique Animation Styles for the About Section */
-.about-section .abt-animated {
-animation-duration: 1s;
-animation-fill-mode: both;
-}
-
-.about-section .abt-fadeInUp {
-	animation-name: abt-fadeInUp;
-  }
-  
-  /* About Content Layout */
-  .about-section .abt-content {
-	display: flex;
-	align-items: center;
-	margin-bottom: 30px;
-	flex-wrap: wrap;
-  }
-  
-  .about-section .abt-profile-pic {
-    flex: 0 0 180px;
-    margin-right: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  .about-section .abt-profile-pic img {
-    width: 100%;
-    display: block;
-    border-radius: 50%;
-  }
-  
-  .about-section .abt-bio {
-	flex: 1;
+/* Bio Section */
+.about-section .abt-bio {
+  flex: 1;
   margin-top: 20px;
-  }
-  @media (max-width: 768px) {
-    .about-section .abt-bio { 
-      margin-top: 30px;
-    }
-    
-  }
-  
-  .about-section .abt-bio h2 {
-    margin-bottom: 10px;
-    font-size: 2.2rem;
-    color: #fff;
-  }
-  
-  .about-section .abt-bio p {
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
-  }
-  .highlight {
-    color: #f39c12;
-    font-weight: bold;
-  }
-  /* Skills Section */
-  .about-section .abt-skills h3 {
-	margin-bottom: 10px;
-	font-size: 1.75rem;
-  }
+}
 
-  .skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    list-style: none;
-    padding: 0;
+.about-section .abt-bio h2 {
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.about-section .abt-bio p {
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Skills Section */
+.about-section .abt-skills h3 {
+  margin-bottom: 10px;
+  font-size: 1.75rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.skills-grid li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.skills-grid li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Timeline Section */
+.about-section .abt-timeline {
+  margin-top: 30px;
+}
+
+.about-section .abt-timeline h3 {
+  margin-bottom: 15px;
+  font-size: 1.75rem;
+  color: #fff;
+}
+
+.about-section .abt-timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.about-section .abt-timeline-item .abt-year {
+  font-weight: bold;
+  background-color: #7b1abc;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.about-section .abt-timeline-item .abt-detail {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin-left: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-section{
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 10px; 
   }
-  .skills-grid li {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 8px 12px;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: bold;
-    transition: all 0.3s;
-  }
-  .skills-grid li:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-  }
-  
-  .about-section .abt-skills ul {
-	list-style: none;
-	padding: 0;
-  }
-  
-  .about-section .abt-skills ul li {
-	background: rgba(255, 255, 255, 0.1);
-	padding: 8px 12px;
-	margin: 5px 0;
-	border-radius: 4px;
-	display: inline-block;
-	margin-right: 10px;
-  }
-  
-  /* Timeline Section */
-  .about-section .abt-timeline {
-	margin-top: 30px;
-  }
-  
-  .about-section .abt-timeline h3 {
-    margin-bottom: 15px;
-    font-size: 1.75rem;
-    color: #fff;
-  }
-  
-  .about-section .abt-timeline-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .about-section .abt-timeline-item .abt-year {
-    font-weight: bold;
-    background-color: #7b1abc;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    min-width: 60px;
+  .abt-content {
+    flex-direction: column;
     text-align: center;
   }
+
+  .about-section .abt-profile-pic {
+    margin-right: 0;
+    margin-bottom: 50px;
+    margin-top: 80px;
   
-  .about-section .abt-timeline-item .abt-detail {
-    flex: 1;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.4;
-    margin-left: 15px;
   }
+
+  .about-section .abt-bio h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-section .abt-bio p {
+    font-size: 1rem;
+  }
+
+  .about-section .abt-skills h3,
+  .about-section .abt-timeline h3 {
+    font-size: 1.3rem;
+  }
+
+  .skills-grid li {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .about-section .abt-timeline-item .abt-year {
+    min-width: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 10px; 
+  }
+
+  .about-section .abt-timeline-item .abt-detail {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
   
 
-/* About Section */
+  .about-section .abt-bio h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-section .abt-bio p {
+    font-size: 0.9rem;
+  }
+
+  .about-section .abt-skills h3,
+  .about-section .abt-timeline h3 {
+    font-size: 1.2rem;
+  }
+
+  .skills-grid li {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+
+  .about-section .abt-timeline-item .abt-year {
+    min-width: 40px;
+    font-size: 0.8rem;
+  }
+
+  .about-section .abt-timeline-item .abt-detail {
+    font-size: 0.8rem;
+  }
+}
 
 body.about-on .about-section {
   transform: translateX(0);
@@ -803,6 +878,7 @@ body.tech-on .tech-section {
   border-radius: 10px;
   width: 300px;
   text-align: center;
+  will-change: transform;
   transition: transform 0.3s ease-in-out;
   opacity: 0;
   animation: slideUp 1s ease-in-out forwards;
