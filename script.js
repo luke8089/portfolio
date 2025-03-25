@@ -1,3 +1,11 @@
+window.addEventListener('load', function() {
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 	// About Section Toggle
 	const aboutText = document.querySelector('.about-text');
@@ -6,17 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
   
 	if (aboutText && aboutClose && aboutSection) {
 	  aboutText.addEventListener('click', () => {
-		aboutSection.style.transform = 'translateX(0)';
-		aboutSection.style.opacity = '1';
-		aboutSection.style.visibility = 'visible';
-		aboutSection.style.overflowY = 'auto';
+		aboutSection.classList.add('active');
+		document.body.style.overflow = 'hidden';
 	  });
   
 	  aboutClose.addEventListener('click', () => {
-		aboutSection.style.transform = 'translateX(-100%)';
-		aboutSection.style.opacity = '0';
-		aboutSection.style.visibility = 'hidden';
-		aboutSection.style.overflowY = 'hidden';
+		aboutSection.classList.remove('active');
+		document.body.style.overflow = '';
 	  });
 	} else {
 	  console.error('One or more elements for the About section are missing in the DOM.');
