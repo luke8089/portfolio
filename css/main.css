@@ -496,11 +496,11 @@ a {
 }
 
 .hero-content {
-    order: 2;
+    order: 1;
 }
 
 .hero-image {
-    order: 1;
+    order: 2;
     max-width: 350px;
     margin: 0 auto;
     position: relative;
@@ -665,6 +665,7 @@ a {
     
     .hero-image {
         max-width: 280px;
+        order: 2;
     }
     
     .scroll-down {
@@ -1532,6 +1533,7 @@ a {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease;
 }
