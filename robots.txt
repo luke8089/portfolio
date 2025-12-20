@@ -1,0 +1,16 @@
+# Robots.txt for meiteikiniedwin.tech
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://meiteikiniedwin.tech/sitemap.xml
+
+# Crawl delay (optional, helps prevent server overload)
+Crawl-delay: 10
+
+# Disallow crawling of specific directories (if any)
+# Uncomment and add paths you don't want indexed:
+# Disallow: /admin/
+# Disallow: /private/
