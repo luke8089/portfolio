@@ -310,3 +310,69 @@ navigationLinks.forEach(link => {
         }, 100);
     });
 });
+
+// ===============================
+// IMAGE PROTECTION
+// ===============================
+
+// Disable right-click on protected images
+document.querySelectorAll('.protected-image').forEach(function(element) {
+    element.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+});
+
+// Disable drag on all images in protected containers
+document.querySelectorAll('.protected-image img').forEach(function(img) {
+    img.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+});
+
+// Prevent keyboard shortcuts for saving images (Ctrl+S, Ctrl+Shift+S)
+document.addEventListener('keydown', function(e) {
+    // Check if focused on protected image area or lightbox is open
+    const lightbox = document.querySelector('[data-image-lightbox]');
+    if (e.target.closest('.protected-image') || lightbox.classList.contains('active')) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+            e.preventDefault();
+            return false;
+        }
+    }
+    // Close lightbox on Escape key
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+    }
+});
+
+// ===============================
+// IMAGE LIGHTBOX
+// ===============================
+
+const avatarTrigger = document.querySelector('[data-avatar-trigger]');
+const imageLightbox = document.querySelector('[data-image-lightbox]');
+const lightboxCloseButtons = document.querySelectorAll('[data-lightbox-close]');
+
+// Open lightbox when avatar is clicked
+if (avatarTrigger && imageLightbox) {
+    avatarTrigger.addEventListener('click', function() {
+        imageLightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close lightbox
+    lightboxCloseButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            imageLightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Prevent right-click on lightbox
+    imageLightbox.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+}

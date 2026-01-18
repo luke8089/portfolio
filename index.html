@@ -322,8 +322,9 @@
     <main>
         <aside class="sidebar " data-sidebar>
             <div class="sidebar-info">
-                <figure class="avatar-box" title="Click to enlarge">
-                    <img src="./images/IMG_7844 (5).jpg" alt="Edwin Meiteikini - System Administrator" loading="eager">
+                <figure class="avatar-box protected-image" title="Click to enlarge" data-avatar-trigger>
+                    <img src="./images/IMG_7844 (5).jpg" alt="Edwin Meiteikini - System Administrator" loading="eager" draggable="false" oncontextmenu="return false;">
+                    <div class="image-protection-overlay"></div>
                 </figure>
 
                 <div class="info-content">
@@ -980,6 +981,18 @@
             </article>
         </div>
     </main>
+
+    <!-- Image Lightbox Modal -->
+    <div class="image-lightbox" data-image-lightbox>
+        <div class="lightbox-overlay" data-lightbox-close></div>
+        <div class="lightbox-content protected-image">
+            <button class="lightbox-close-btn" data-lightbox-close>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <img src="./images/IMG_7844 (5).jpg" alt="Edwin Meiteikini" draggable="false" oncontextmenu="return false;">
+            <div class="image-protection-overlay"></div>
+        </div>
+    </div>
 
     <!-- Scripts optimized for performance -->
     <script src="./script.js" defer></script>
