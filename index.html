@@ -64,8 +64,10 @@
     <!-- Sitemap Reference -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://meiteikiniedwin.tech/sitemap.xml">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <!-- Favicon - Multiple sizes for better visibility -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="images/IMG_7844 (5).jpg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="images/IMG_7844 (5).jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="images/IMG_7844 (5).jpg">
     
     <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
@@ -94,9 +96,10 @@
     <meta property="profile:last_name" content="Meiteikini">
     <meta property="profile:username" content="edwinmeiteikini">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="./images/IMG_7844 (5).jpg">
-    <link rel="apple-touch-icon" href="./images/IMG_7844 (5).jpg">
+    <!-- Apple Touch Icon & Additional Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/IMG_7844 (5).jpg">
+    <link rel="mask-icon" href="./images/IMG_7844 (5).jpg" color="#1e1e1f">
+    <meta name="msapplication-TileImage" content="./images/IMG_7844 (5).jpg">
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#1e1e1f">
@@ -260,6 +263,45 @@
           "position": 6,
           "name": "Contact",
           "item": "https://meiteikiniedwin.tech/#contact"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Site Navigation Element for Google Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SiteNavigationElement",
+          "name": "About",
+          "description": "Learn about Edwin Meiteikini - System Administrator, Full Stack Developer & ICT Support Specialist",
+          "url": "https://meiteikiniedwin.tech/#about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Resume",
+          "description": "View Edwin Meiteikini's professional experience, education, and skills",
+          "url": "https://meiteikiniedwin.tech/#resume"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Portfolio",
+          "description": "Explore Edwin Meiteikini's projects and work samples",
+          "url": "https://meiteikiniedwin.tech/#portfolio"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Blog",
+          "description": "Read articles and insights from Edwin Meiteikini",
+          "url": "https://meiteikiniedwin.tech/#blog"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Contact",
+          "description": "Get in touch with Edwin Meiteikini for IT services and collaboration",
+          "url": "https://meiteikiniedwin.tech/#contact"
         }
       ]
     }
