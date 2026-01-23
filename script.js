@@ -540,14 +540,25 @@ declineCookies.addEventListener('click', function() {
     }
 });
 
-// Scroll to Top Button
+// Scroll to Top Button and Theme Toggle visibility on mobile
 const scrollTop = document.getElementById('scrollTop');
+const isMobile = window.innerWidth <= 768;
 
 window.addEventListener('scroll', function() {
     if (window.pageYOffset > 300) {
         scrollTop.classList.add('show');
+        
+        // Show theme toggle on mobile when scrolling
+        if (window.innerWidth <= 768) {
+            themeToggle.classList.add('show');
+        }
     } else {
         scrollTop.classList.remove('show');
+        
+        // Hide theme toggle on mobile when at top
+        if (window.innerWidth <= 768) {
+            themeToggle.classList.remove('show');
+        }
     }
 });
 
@@ -556,6 +567,20 @@ scrollTop.addEventListener('click', function() {
         top: 0,
         behavior: 'smooth'
     });
+});
+
+// Ensure theme toggle is visible on desktop
+if (window.innerWidth > 768) {
+    themeToggle.classList.add('show');
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        themeToggle.classList.add('show');
+    } else if (window.pageYOffset <= 300) {
+        themeToggle.classList.remove('show');
+    }
 });
 
 // Performance Monitoring

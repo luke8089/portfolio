@@ -3017,10 +3017,20 @@ article[data-page] {
     }
     
     .theme-toggle {
-        top: 10px;
+        top: 80px;
         right: 10px;
         width: 45px;
         height: 45px;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+    }
+    
+    .theme-toggle.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
     
     .scroll-top {
@@ -3046,8 +3056,19 @@ article[data-page] {
 
 @media (max-width: 450px) {
     .theme-toggle {
+        top: 75px;
+        right: 8px;
         width: 40px;
         height: 40px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+    }
+    
+    .theme-toggle.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
     
     .theme-toggle ion-icon {
@@ -3065,6 +3086,14 @@ article[data-page] {
     
     .cookie-consent {
         padding: 15px;
+    }
+}
+
+/* Mobile landscape orientation */
+@media (max-width: 580px) and (orientation: landscape) {
+    .theme-toggle {
+        top: 15px;
+        right: 60px;
     }
 }
 
