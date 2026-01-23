@@ -6,8 +6,23 @@ const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+const sidebarInfo = document.querySelector(".sidebar-info");
 
-sidebarBtn.addEventListener("click", function() {elementToggleFunc(sidebar); })
+sidebarBtn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    elementToggleFunc(sidebar);
+});
+
+// Make entire sidebar-info clickable on mobile (screens <= 1250px)
+sidebarInfo.addEventListener("click", function(e) {
+    // Only work on mobile/tablet
+    if (window.innerWidth <= 1250) {
+        // Prevent triggering if clicking on links or buttons
+        if (!e.target.closest('a') && !e.target.closest('button')) {
+            elementToggleFunc(sidebar);
+        }
+    }
+});
 
 //Activating Modal-testimonial
 

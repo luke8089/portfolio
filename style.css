@@ -448,6 +448,18 @@ article { display: none; }
     gap: 15px;
 }
 
+/* Make sidebar-info clickable on mobile */
+@media (max-width: 1250px) {
+    .sidebar-info {
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .sidebar-info:active {
+        opacity: 0.9;
+    }
+}
+
 
 
 .avatar-box {
