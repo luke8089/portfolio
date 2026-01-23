@@ -5,7 +5,11 @@ const urlsToCache = [
   '/style.css',
   '/script.js',
   '/images/logo.jpg',
-  '/manifest.json'
+  '/manifest.json',
+  '/404.html',
+  '/humans.txt',
+  'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js',
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'
 ];
 
 // Install event

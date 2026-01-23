@@ -1,0 +1,26 @@
+/* TEAM */
+Developer: Edwin Meiteikini
+Location: Nairobi, Kenya
+Contact: edwinmeiteikini@gmail.com
+LinkedIn: https://www.linkedin.com/in/edwin-meiteikini-6696a628b
+GitHub: https://github.com/luke8089
+
+/* SITE */
+Last update: 2026/01/23
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: PWA, Service Worker, Dark Mode
+Software: VS Code, Git, GitHub
+
+/* THANKS */
+Original Template: ULTRA CODE (CodePen)
+Icons: Ionicons
+Forms: Web3Forms
+Maps: Google Maps API
+Analytics: Google Analytics
+Fonts: Google Fonts (Poppins)
+
+/* SITE INFO */
+Purpose: Professional Portfolio
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code

@@ -42,8 +42,7 @@
     <meta name="revisit-after" content="7 days">
     
     <!-- Google Search Console Verification -->
-    <!-- IMPORTANT: Replace 'YOUR_VERIFICATION_CODE' with your actual code from Google Search Console -->
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
+    <meta name="google-site-verification" content="google1393395cb76b5880">
     
     <!-- Geographic Meta Tags for Local SEO -->
     <meta name="geo.region" content="KE-30">
@@ -90,11 +89,21 @@
     <meta name="twitter:creator" content="@edwinmeiteikini">
     
     <!-- Additional Social Media Meta Tags -->
-    <meta property="fb:app_id" content="YOUR_FB_APP_ID">
     <meta property="og:type" content="profile">
     <meta property="profile:first_name" content="Edwin">
     <meta property="profile:last_name" content="Meiteikini">
     <meta property="profile:username" content="edwinmeiteikini">
+    
+    <!-- Additional SEO Tags -->
+    <meta name="rating" content="General">
+    <meta name="distribution" content="Global">
+    <meta name="coverage" content="Worldwide">
+    <meta name="target" content="all">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    
+    <!-- LinkedIn Specific -->
+    <meta property="og:see_also" content="https://www.linkedin.com/in/edwin-meiteikini-6696a628b">
     
     <!-- Apple Touch Icon & Additional Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./images/logo.jpg">
@@ -104,6 +113,9 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#1e1e1f">
     <meta name="msapplication-TileColor" content="#1e1e1f">
+    
+    <!-- Author Info -->
+    <link type="text/plain" rel="author" href="./humans.txt">
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="./style.css" as="style">
@@ -310,22 +322,55 @@
     }
     </script>
     
-    <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
+    <!-- Google Analytics with Cookie Consent -->
+    <!-- Google tag (gtag.js) - Only loads if cookies accepted -->
+    <script id="analytics-script">
+      // Analytics will be initialized after cookie consent
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
+      
+      // Function to initialize Google Analytics
+      function initAnalytics() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(script);
+        
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX', {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+          });
+        };
+      }
     </script>
   </head>
     
   <body>
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+                This website uses cookies and analytics to improve your experience. By continuing to use this site, you consent to our use of cookies.
+            </p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn accept" id="acceptCookies">Accept</button>
+                <button class="cookie-btn decline" id="declineCookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <ion-icon name="moon-outline" class="moon-icon"></ion-icon>
         <ion-icon name="sunny-outline" class="sun-icon"></ion-icon>
+    </button>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <ion-icon name="chevron-up-outline"></ion-icon>
     </button>
 
     <main>

@@ -113,6 +113,125 @@
     display: none;
 }
 
+/* Cookie Consent Banner */
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-gradient-onyx);
+    border-top: 2px solid var(--mint-green);
+    padding: 20px;
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-consent.show {
+    transform: translateY(0);
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cookie-text {
+    color: var(--light-gray);
+    font-size: var(--fs6);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    flex: 1;
+    min-width: 250px;
+}
+
+.cookie-text ion-icon {
+    font-size: 24px;
+    color: var(--mint-green);
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.cookie-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: var(--fs6);
+    font-weight: var(--fw500);
+    transition: var(--transition1);
+    cursor: pointer;
+}
+
+.cookie-btn.accept {
+    background: var(--mint-green);
+    color: var(--smoky-black);
+    border: 1px solid var(--mint-green);
+}
+
+.cookie-btn.accept:hover {
+    background: var(--mint-green-bright);
+    transform: translateY(-2px);
+}
+
+.cookie-btn.decline {
+    background: transparent;
+    color: var(--light-gray);
+    border: 1px solid var(--jet);
+}
+
+.cookie-btn.decline:hover {
+    background: var(--jet);
+    border-color: var(--light-gray);
+}
+
+/* Scroll to Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-gradient-green2);
+    border: 1px solid var(--jet);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow2);
+}
+
+.scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow3);
+}
+
+.scroll-top ion-icon {
+    font-size: 24px;
+    color: var(--mint-green-bright);
+}
+
 /* Loading State */
 body {
     opacity: 0;
@@ -2903,6 +3022,26 @@ article[data-page] {
         width: 45px;
         height: 45px;
     }
+    
+    .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .cookie-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cookie-buttons {
+        width: 100%;
+    }
+    
+    .cookie-btn {
+        flex: 1;
+    }
 }
 
 @media (max-width: 450px) {
@@ -2914,6 +3053,58 @@ article[data-page] {
     .theme-toggle ion-icon {
         font-size: 20px;
     }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .scroll-top ion-icon {
+        font-size: 20px;
+    }
+    
+    .cookie-consent {
+        padding: 15px;
+    }
+}
+
+/* Accessibility improvements */
+.skip-link:focus {
+    outline: 3px solid var(--mint-green);
+    outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --light-gray: hsl(0, 0%, 90%);
+        --mint-green: hsl(145, 50%, 70%);
+    }
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--mint-green);
+    outline-offset: 4px;
+}
+
+/* Improve link visibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--mint-green-bright);
+    outline-offset: 2px;
 }
 
 

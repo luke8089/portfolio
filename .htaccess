@@ -52,8 +52,8 @@
 Options -Indexes
 
 # Custom error pages
-ErrorDocument 404 /index.html
-ErrorDocument 500 /index.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
 
 # Protect sensitive files
 <FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|git)$">

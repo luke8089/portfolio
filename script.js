@@ -488,3 +488,120 @@ window.addEventListener('beforeprint', function() {
 window.addEventListener('afterprint', function() {
     document.body.classList.remove('printing');
 });
+
+// Cookie Consent Management
+const cookieConsent = document.getElementById('cookieConsent');
+const acceptCookies = document.getElementById('acceptCookies');
+const declineCookies = document.getElementById('declineCookies');
+
+// Check if user has already made a choice
+const cookieChoice = localStorage.getItem('cookieConsent');
+
+if (!cookieChoice) {
+    // Show banner after 2 seconds if no choice made
+    setTimeout(() => {
+        cookieConsent.classList.add('show');
+    }, 2000);
+}
+
+// If cookies were accepted, initialize analytics
+if (cookieChoice === 'accepted') {
+    if (typeof initAnalytics === 'function') {
+        initAnalytics();
+    }
+}
+
+acceptCookies.addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    cookieConsent.classList.remove('show');
+    
+    // Initialize Google Analytics
+    if (typeof initAnalytics === 'function') {
+        initAnalytics();
+    }
+    
+    // Track consent
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+        });
+    }
+});
+
+declineCookies.addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'declined');
+    cookieConsent.classList.remove('show');
+    
+    // Disable analytics
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'denied'
+        });
+    }
+});
+
+// Scroll to Top Button
+const scrollTop = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        scrollTop.classList.add('show');
+    } else {
+        scrollTop.classList.remove('show');
+    }
+});
+
+scrollTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Performance Monitoring
+if ('PerformanceObserver' in window) {
+    try {
+        const perfObserver = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                if (entry.entryType === 'largest-contentful-paint') {
+                    console.log('LCP:', entry.renderTime || entry.loadTime);
+                }
+            }
+        });
+        perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+    } catch (e) {
+        console.log('Performance monitoring not available');
+    }
+}
+
+// Network Status Detection
+window.addEventListener('online', function() {
+    console.log('Back online');
+    // You can show a notification here
+});
+
+window.addEventListener('offline', function() {
+    console.log('No internet connection');
+    // You can show a notification here
+});
+
+// Accessibility: Skip to main content
+const skipLink = document.createElement('a');
+skipLink.href = '#main-content';
+skipLink.className = 'skip-link';
+skipLink.textContent = 'Skip to main content';
+skipLink.style.cssText = 'position:absolute;top:-40px;left:0;background:#000;color:#fff;padding:8px;z-index:100;';
+skipLink.addEventListener('focus', function() {
+    this.style.top = '0';
+});
+skipLink.addEventListener('blur', function() {
+    this.style.top = '-40px';
+});
+document.body.insertBefore(skipLink, document.body.firstChild);
+
+// Add id to main for skip link
+const mainContent = document.querySelector('main');
+if (mainContent && !mainContent.id) {
+    mainContent.id = 'main-content';
+    mainContent.setAttribute('tabindex', '-1');
+}
