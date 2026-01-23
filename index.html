@@ -115,6 +115,9 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
     <!-- Performance Meta Tags -->
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -319,6 +322,12 @@
   </head>
     
   <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <ion-icon name="moon-outline" class="moon-icon"></ion-icon>
+        <ion-icon name="sunny-outline" class="sun-icon"></ion-icon>
+    </button>
+
     <main>
         <aside class="sidebar " data-sidebar>
             <div class="sidebar-info">
@@ -733,6 +742,95 @@
                 </div>
             </li>
         </ul>
+    </section>
+
+    <!-- Certifications & Achievements -->
+    <section class="timeline">
+        <div class="title-wrapper">
+            <div class="icon-box">
+                <ion-icon name="trophy-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Certifications & Achievements</h3>
+        </div>
+
+        <ol class="timeline-list">
+            <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                    Professional Certifications
+                </h4>
+                <span>Ongoing Professional Development</span>
+                <p class="timeline-text">
+                    Continuously updating skills through professional courses and certifications in cloud computing, cybersecurity, and modern development frameworks.
+                </p>
+            </li>
+
+            <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                    Client Success Stories
+                </h4>
+                <span>2022 – Present</span>
+                <p class="timeline-text">
+                    Successfully delivered 10+ web development projects for clients across Kenya, achieving 100% client satisfaction and repeat business.
+                </p>
+            </li>
+
+            <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                    Academic Excellence
+                </h4>
+                <span>Mount Kenya University</span>
+                <p class="timeline-text">
+                    Dean's List recognition for outstanding academic performance in Computer Science program.
+                </p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Technical Stack Details -->
+    <section class="skill">
+        <h3 class="h3 skills-title">Technical Stack</h3>
+
+        <div class="tech-stack-grid">
+            <div class="tech-category">
+                <h4 class="h4">Frontend Development</h4>
+                <ul class="tech-list">
+                    <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                    <li>React.js, Vue.js</li>
+                    <li>Tailwind CSS, Bootstrap</li>
+                    <li>Responsive Web Design</li>
+                </ul>
+            </div>
+
+            <div class="tech-category">
+                <h4 class="h4">Backend Development</h4>
+                <ul class="tech-list">
+                    <li>Node.js, Express.js</li>
+                    <li>Python, Django</li>
+                    <li>PHP, Laravel</li>
+                    <li>RESTful APIs, GraphQL</li>
+                </ul>
+            </div>
+
+            <div class="tech-category">
+                <h4 class="h4">Database & Tools</h4>
+                <ul class="tech-list">
+                    <li>MySQL, PostgreSQL, MongoDB</li>
+                    <li>Git, GitHub, GitLab</li>
+                    <li>Docker, Kubernetes</li>
+                    <li>AWS, Azure, Google Cloud</li>
+                </ul>
+            </div>
+
+            <div class="tech-category">
+                <h4 class="h4">System Administration</h4>
+                <ul class="tech-list">
+                    <li>Linux/Unix Server Administration</li>
+                    <li>Windows Server Management</li>
+                    <li>Network Configuration & Security</li>
+                    <li>Active Directory, DNS, DHCP</li>
+                </ul>
+            </div>
+        </div>
     </section>
             </article>
 
