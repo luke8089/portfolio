@@ -3028,6 +3028,13 @@ article[data-page] {
         grid-template-columns: 1fr;
     }
     
+    /* Reorder navbar items for mobile */
+    .navbar-item:nth-child(1) { order: 1; } /* About - stays first */
+    .navbar-item:nth-child(2) { order: 3; } /* Resume - moves to third */
+    .navbar-item:nth-child(3) { order: 2; } /* Projects - moves to second */
+    .navbar-item:nth-child(4) { order: 5; } /* Blog - moves to last */
+    .navbar-item:nth-child(5) { order: 4; } /* Contact - moves to fourth */
+    
     .theme-toggle {
         top: 80px;
         right: 10px;
