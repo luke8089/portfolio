@@ -392,44 +392,7 @@ if (avatarTrigger && imageLightbox) {
     });
 }
 
-// Dark Mode Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
 
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
-html.setAttribute('data-theme', currentTheme);
-
-// Update toggle button appearance
-function updateThemeIcon(theme) {
-    const moonIcon = themeToggle.querySelector('.moon-icon');
-    const sunIcon = themeToggle.querySelector('.sun-icon');
-    
-    if (theme === 'dark') {
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-    } else {
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'none';
-    }
-}
-
-updateThemeIcon(currentTheme);
-
-// Theme toggle event listener
-themeToggle.addEventListener('click', function() {
-    let theme = html.getAttribute('data-theme');
-    
-    if (theme === 'light') {
-        html.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        updateThemeIcon('dark');
-    } else {
-        html.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        updateThemeIcon('light');
-    }
-});
 
 // Performance: Lazy load images
 if ('IntersectionObserver' in window) {
@@ -555,25 +518,14 @@ declineCookies.addEventListener('click', function() {
     }
 });
 
-// Scroll to Top Button and Theme Toggle visibility on mobile
+// Scroll to Top Button
 const scrollTop = document.getElementById('scrollTop');
-const isMobile = window.innerWidth <= 768;
 
 window.addEventListener('scroll', function() {
     if (window.pageYOffset > 300) {
         scrollTop.classList.add('show');
-        
-        // Show theme toggle on mobile when scrolling
-        if (window.innerWidth <= 768) {
-            themeToggle.classList.add('show');
-        }
     } else {
         scrollTop.classList.remove('show');
-        
-        // Hide theme toggle on mobile when at top
-        if (window.innerWidth <= 768) {
-            themeToggle.classList.remove('show');
-        }
     }
 });
 
@@ -582,20 +534,6 @@ scrollTop.addEventListener('click', function() {
         top: 0,
         behavior: 'smooth'
     });
-});
-
-// Ensure theme toggle is visible on desktop
-if (window.innerWidth > 768) {
-    themeToggle.classList.add('show');
-}
-
-// Handle window resize
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) {
-        themeToggle.classList.add('show');
-    } else if (window.pageYOffset <= 300) {
-        themeToggle.classList.remove('show');
-    }
 });
 
 // Performance Monitoring
