@@ -471,6 +471,7 @@ window.addEventListener('afterprint', function() {
 const cookieConsent = document.getElementById('cookieConsent');
 const acceptCookies = document.getElementById('acceptCookies');
 const declineCookies = document.getElementById('declineCookies');
+const cookiePreferencesBtn = document.getElementById('cookiePreferencesBtn');
 
 // Check if user has already made a choice
 const cookieChoice = localStorage.getItem('cookieConsent');
@@ -489,8 +490,14 @@ if (cookieChoice === 'accepted') {
     }
 }
 
+// Store consent timestamp for legal compliance
+function recordConsent(choice) {
+    localStorage.setItem('cookieConsent', choice);
+    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+}
+
 acceptCookies.addEventListener('click', function() {
-    localStorage.setItem('cookieConsent', 'accepted');
+    recordConsent('accepted');
     cookieConsent.classList.remove('show');
     
     // Initialize Google Analytics
@@ -507,7 +514,7 @@ acceptCookies.addEventListener('click', function() {
 });
 
 declineCookies.addEventListener('click', function() {
-    localStorage.setItem('cookieConsent', 'declined');
+    recordConsent('declined');
     cookieConsent.classList.remove('show');
     
     // Disable analytics
@@ -517,6 +524,24 @@ declineCookies.addEventListener('click', function() {
         });
     }
 });
+
+// Cookie Preferences button - let users change their choice
+if (cookiePreferencesBtn) {
+    cookiePreferencesBtn.addEventListener('click', function() {
+        // Clear previous choice and show banner again
+        localStorage.removeItem('cookieConsent');
+        localStorage.removeItem('cookieConsentDate');
+        cookieConsent.classList.add('show');
+        
+        // Disable analytics until new consent
+        window['ga-disable-G-61TSWEFZQL'] = true;
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'denied'
+            });
+        }
+    });
+}
 
 // Scroll to Top Button
 const scrollTop = document.getElementById('scrollTop');

@@ -56,7 +56,7 @@
     right: 0;
     background: var(--bg-gradient-onyx);
     border-top: 2px solid var(--mint-green);
-    padding: 20px;
+    padding: 20px 20px 24px;
     z-index: 9999;
     transform: translateY(100%);
     transition: transform 0.3s ease;
@@ -77,25 +77,50 @@
     flex-wrap: wrap;
 }
 
-.cookie-text {
-    color: var(--light-gray);
-    font-size: var(--fs6);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
+.cookie-text-wrapper {
     flex: 1;
     min-width: 250px;
 }
 
-.cookie-text ion-icon {
-    font-size: 24px;
+.cookie-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.cookie-header ion-icon {
+    font-size: 22px;
     color: var(--mint-green);
+}
+
+.cookie-header strong {
+    color: var(--white1);
+    font-size: var(--fs5);
+}
+
+.cookie-text {
+    color: var(--light-gray);
+    font-size: var(--fs6);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.cookie-link {
+    color: var(--mint-green);
+    text-decoration: underline;
+    margin-left: 4px;
+    transition: color 0.2s;
+}
+
+.cookie-link:hover {
+    color: var(--mint-green-bright);
 }
 
 .cookie-buttons {
     display: flex;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .cookie-btn {
@@ -105,6 +130,7 @@
     font-weight: var(--fw500);
     transition: var(--transition1);
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .cookie-btn.accept {
@@ -127,6 +153,39 @@
 .cookie-btn.decline:hover {
     background: var(--jet);
     border-color: var(--light-gray);
+}
+
+/* Cookie Preferences Footer Button */
+.cookie-preferences-footer {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99;
+}
+
+.cookie-preferences-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-gradient-jet);
+    color: var(--light-gray);
+    border: 1px solid var(--jet);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition1);
+    opacity: 0.7;
+}
+
+.cookie-preferences-btn:hover {
+    opacity: 1;
+    border-color: var(--mint-green);
+    color: var(--mint-green);
+}
+
+.cookie-preferences-btn ion-icon {
+    font-size: 14px;
 }
 
 /* Scroll to Top Button */
@@ -2987,6 +3046,16 @@ article[data-page] {
     .cookie-btn {
         flex: 1;
     }
+
+    .cookie-preferences-footer {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .cookie-preferences-btn {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -3001,6 +3070,10 @@ article[data-page] {
     
     .cookie-consent {
         padding: 15px;
+    }
+
+    .cookie-header strong {
+        font-size: var(--fs6);
     }
 }
 

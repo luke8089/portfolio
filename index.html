@@ -349,14 +349,20 @@
     
   <body>
     <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent" id="cookieConsent" role="dialog" aria-label="Cookie consent" aria-describedby="cookieText">
         <div class="cookie-content">
-            <p class="cookie-text">
-                <ion-icon name="shield-checkmark-outline"></ion-icon>
-                This website uses cookies and analytics to improve your experience. By continuing to use this site, you consent to our use of cookies.
-            </p>
+            <div class="cookie-text-wrapper">
+                <div class="cookie-header">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <strong>Your Privacy Matters</strong>
+                </div>
+                <p class="cookie-text" id="cookieText">
+                    This website uses Google Analytics to understand how visitors interact with the site. This helps improve content and user experience. No personal data is sold or shared with third parties. You can change your preference at any time.
+                    <a href="privacy-policy.html" class="cookie-link" target="_blank">Privacy Policy</a>
+                </p>
+            </div>
             <div class="cookie-buttons">
-                <button class="cookie-btn accept" id="acceptCookies">Accept</button>
+                <button class="cookie-btn accept" id="acceptCookies">Accept Analytics</button>
                 <button class="cookie-btn decline" id="declineCookies">Decline</button>
             </div>
         </div>
@@ -1165,6 +1171,14 @@
             </article>
         </div>
     </main>
+
+    <!-- Cookie Preferences Footer Link -->
+    <div class="cookie-preferences-footer">
+        <button class="cookie-preferences-btn" id="cookiePreferencesBtn" aria-label="Change cookie preferences">
+            <ion-icon name="settings-outline"></ion-icon>
+            Cookie Preferences
+        </button>
+    </div>
 
     <!-- Image Lightbox Modal -->
     <div class="image-lightbox" data-image-lightbox>
