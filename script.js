@@ -472,15 +472,19 @@ const cookieConsent = document.getElementById('cookieConsent');
 const acceptCookies = document.getElementById('acceptCookies');
 const declineCookies = document.getElementById('declineCookies');
 const cookiePreferencesBtn = document.getElementById('cookiePreferencesBtn');
+const cookiePrefFooter = document.getElementById('cookiePreferencesBtn')?.closest('.cookie-preferences-footer');
 
 // Check if user has already made a choice
 const cookieChoice = localStorage.getItem('cookieConsent');
 
 if (!cookieChoice) {
-    // Show banner after 2 seconds if no choice made
+    // Show banner after 1.5 seconds if no choice made
     setTimeout(() => {
         cookieConsent.classList.add('show');
-    }, 2000);
+    }, 1500);
+} else {
+    // Show the small preferences link only after user has already decided
+    if (cookiePrefFooter) cookiePrefFooter.classList.add('visible');
 }
 
 // If cookies were accepted, initialize analytics
@@ -499,12 +503,13 @@ function recordConsent(choice) {
 acceptCookies.addEventListener('click', function() {
     recordConsent('accepted');
     cookieConsent.classList.remove('show');
-    
+    if (cookiePrefFooter) cookiePrefFooter.classList.add('visible');
+
     // Initialize Google Analytics
     if (typeof initAnalytics === 'function') {
         initAnalytics();
     }
-    
+
     // Track consent
     if (typeof gtag === 'function') {
         gtag('consent', 'update', {
@@ -516,7 +521,8 @@ acceptCookies.addEventListener('click', function() {
 declineCookies.addEventListener('click', function() {
     recordConsent('declined');
     cookieConsent.classList.remove('show');
-    
+    if (cookiePrefFooter) cookiePrefFooter.classList.add('visible');
+
     // Disable analytics
     if (typeof gtag === 'function') {
         gtag('consent', 'update', {
@@ -532,7 +538,8 @@ if (cookiePreferencesBtn) {
         localStorage.removeItem('cookieConsent');
         localStorage.removeItem('cookieConsentDate');
         cookieConsent.classList.add('show');
-        
+        if (cookiePrefFooter) cookiePrefFooter.classList.remove('visible');
+
         // Disable analytics until new consent
         window['ga-disable-G-61TSWEFZQL'] = true;
         if (typeof gtag === 'function') {
