@@ -596,3 +596,76 @@ if (mainContent && !mainContent.id) {
     mainContent.id = 'main-content';
     mainContent.setAttribute('tabindex', '-1');
 }
+
+// ===============================
+// GLOSSY 3D EFFECTS
+// ===============================
+
+(function init3DEffects() {
+    // Only run on pointer devices (desktops/laptops with a mouse)
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    function addGloss(selector, tilt, depth) {
+        document.querySelectorAll(selector).forEach(card => {
+            if (!card.querySelector('.shine-overlay')) {
+                const shine = document.createElement('div');
+                shine.className = 'shine-overlay';
+                card.appendChild(shine);
+            }
+            const shine = card.querySelector('.shine-overlay');
+
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.08s ease, box-shadow 0.3s ease';
+            });
+
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const x = e.clientX - r.left;
+                const y = e.clientY - r.top;
+                const cx = r.width / 2;
+                const cy = r.height / 2;
+                const tX = ((y - cy) / cy) * -tilt;
+                const tY = ((x - cx) / cx) * tilt;
+                const pX = (x / r.width) * 100;
+                const pY = (y / r.height) * 100;
+
+                card.style.transform =
+                    `perspective(900px) rotateX(${tX}deg) rotateY(${tY}deg) translateZ(${depth}px)`;
+                shine.style.background =
+                    `radial-gradient(circle at ${pX}% ${pY}%, rgba(255,255,255,0.13) 0%, transparent 65%)`;
+                shine.style.opacity = '1';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.55s ease, box-shadow 0.3s ease';
+                card.style.transform = '';
+                shine.style.opacity = '0';
+            });
+        });
+    }
+
+    function addTilt(selector, tilt, depth) {
+        document.querySelectorAll(selector).forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.08s ease, box-shadow 0.3s ease';
+            });
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const tX = (((e.clientY - r.top) / r.height) - 0.5) * -tilt * 2;
+                const tY = (((e.clientX - r.left) / r.width) - 0.5) * tilt * 2;
+                card.style.transform =
+                    `perspective(900px) rotateX(${tX}deg) rotateY(${tY}deg) translateZ(${depth}px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.55s ease, box-shadow 0.3s ease';
+                card.style.transform = '';
+            });
+        });
+    }
+
+    addGloss('.service-item', 8, 10);
+    addGloss('.content-card[data-testimonials-item]', 6, 8);
+    addGloss('.tech-category', 6, 8);
+    addTilt('.project-item', 8, 14);
+    addTilt('.blog-post-item', 6, 10);
+})();
