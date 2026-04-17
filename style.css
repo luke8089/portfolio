@@ -3226,3 +3226,37 @@ button:focus-visible {
 .avatar-box[data-avatar-trigger]:hover {
     transform: scale(1.05);
 }
+
+/* ===============================
+   SCROLL REVEAL
+   =============================== */
+
+[data-reveal] {
+    animation: none !important;
+    opacity: 0;
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+[data-reveal="fade-up"]   { transform: translateY(50px); }
+[data-reveal="fade-left"]  { transform: translateX(-55px); }
+[data-reveal="fade-right"] { transform: translateX(55px); }
+[data-reveal="zoom"]       { transform: scale(0.88); }
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: none;
+}
+
+[data-delay="1"] { transition-delay: 0.1s; }
+[data-delay="2"] { transition-delay: 0.2s; }
+[data-delay="3"] { transition-delay: 0.3s; }
+[data-delay="4"] { transition-delay: 0.4s; }
+[data-delay="5"] { transition-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

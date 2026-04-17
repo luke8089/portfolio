@@ -226,103 +226,84 @@ for(let i = 0; i < navigationLinks.length; i++) {
         }
     });
 }
-// Modern Scroll Animation Observer
+// ===============================
+// SCROLL REVEAL
+// ===============================
 
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+const revealGroups = [
+    { selector: '.about-text p',             reveal: 'fade-up' },
+    { selector: '.service-title',            reveal: 'fade-up' },
+    { selector: '.service-item',             reveal: 'fade-up',    stagger: true },
+    { selector: '.testimonials-title',       reveal: 'fade-up' },
+    { selector: '.testimonials-item',        reveal: 'zoom',       stagger: true },
+    { selector: '.clients-title',            reveal: 'fade-up' },
+    { selector: '.clients-item',             reveal: 'zoom',       stagger: true },
+    { selector: '.timeline .title-wrapper',  reveal: 'fade-left' },
+    { selector: '.timeline-item',            reveal: 'fade-left',  stagger: true },
+    { selector: '.skills-title',             reveal: 'fade-up' },
+    { selector: '.skills-item',              reveal: 'fade-right', stagger: true },
+    { selector: '.tech-category',            reveal: 'fade-up',    stagger: true },
+    { selector: '.project-item',             reveal: 'zoom',       stagger: true },
+    { selector: '.blog-post-item',           reveal: 'fade-up',    stagger: true },
+    { selector: '.form-title',               reveal: 'fade-up' },
+    { selector: '.contact-form',             reveal: 'fade-up' },
+    { selector: '.mapbox',                   reveal: 'fade-up',    delay: '2' },
+];
 
-const animateOnScroll = new IntersectionObserver(function(entries) {
+function setupRevealAttributes() {
+    revealGroups.forEach(({ selector, reveal, stagger, delay }) => {
+        document.querySelectorAll(selector).forEach((el, i) => {
+            if (el.hasAttribute('data-reveal')) return;
+            el.setAttribute('data-reveal', reveal);
+            if (stagger && i > 0) el.setAttribute('data-delay', String(Math.min(i, 5)));
+            else if (delay) el.setAttribute('data-delay', delay);
+        });
+    });
+}
+
+const scrollRevealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-            
-            // Special handling for skills progress bars
-            if (entry.target.classList.contains('skills-item')) {
-                const progressBar = entry.target.querySelector('.skills-progress-fill');
-                if (progressBar) {
-                    const width = progressBar.style.width;
-                    progressBar.style.setProperty('--progress-width', width);
-                }
-            }
+            entry.target.classList.add('revealed');
+            scrollRevealObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-// Initialize animations when page loads
-function initScrollAnimations() {
-    // Animate sections
-    const sections = document.querySelectorAll('.about-text, .service, .testimonials, .clients, .timeline, .skill, .projects, .blog-posts, .contact-form, .mapbox');
-    sections.forEach((section, index) => {
-        section.classList.add('animate-on-scroll', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(section);
-    });
-
-    // Animate service items with slide
-    const serviceItems = document.querySelectorAll('.service-item');
-    serviceItems.forEach((item, index) => {
-        item.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
-    });
-
-    // Animate timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach((item, index) => {
-        item.classList.add('animate-on-scroll', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
-    });
-
-    // Animate skills items
-    const skillsItems = document.querySelectorAll('.skills-item');
-    skillsItems.forEach((item, index) => {
-        item.classList.add('slide-in-right', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
-    });
-
-    // Animate project items
-    const projectItems = document.querySelectorAll('.project-item');
-    projectItems.forEach((item, index) => {
-        item.classList.add('scale-in', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
-    });
-
-    // Animate blog items
-    const blogItems = document.querySelectorAll('.blog-post-item');
-    blogItems.forEach((item, index) => {
-        item.classList.add('animate-on-scroll', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
-    });
-
-    // Animate testimonials
-    const testimonialItems = document.querySelectorAll('.testimonials-item');
-    testimonialItems.forEach((item, index) => {
-        item.classList.add('fade-in', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
-    });
-
-    // Animate client logos
-    const clientItems = document.querySelectorAll('.clients-item');
-    clientItems.forEach((item, index) => {
-        item.classList.add('scale-in', `stagger-delay-${index % 7}`);
-        animateOnScroll.observe(item);
+function revealInViewport() {
+    document.querySelectorAll('[data-reveal]:not(.revealed)').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight - 40 && r.bottom > 0) {
+            el.classList.add('revealed');
+        }
     });
 }
 
-// Initialize animations when DOM is loaded
+function initReveal() {
+    setupRevealAttributes();
+    document.querySelectorAll('[data-reveal]').forEach(el => scrollRevealObserver.observe(el));
+    revealInViewport();
+}
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    document.addEventListener('DOMContentLoaded', initReveal);
 } else {
-    initScrollAnimations();
+    initReveal();
 }
 
-// Re-observe elements when changing pages
+// Re-check reveal after switching tabs
 navigationLinks.forEach(link => {
-    const originalClick = link.onclick;
     link.addEventListener('click', function() {
         setTimeout(() => {
-            initScrollAnimations();
-        }, 100);
+            const active = document.querySelector('article.active');
+            if (active) {
+                active.querySelectorAll('[data-reveal]:not(.revealed)').forEach(el => {
+                    scrollRevealObserver.unobserve(el);
+                    scrollRevealObserver.observe(el);
+                });
+            }
+            revealInViewport();
+        }, 60);
     });
 });
 
