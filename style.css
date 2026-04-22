@@ -155,23 +155,8 @@
     border-color: var(--light-gray);
 }
 
-/* Cookie Preferences Footer Button */
-.cookie-preferences-footer {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.cookie-preferences-footer.visible {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+/* Cookie Preferences Footer Button — removed; kept selector for safety */
+.cookie-preferences-footer { display: none; }
 
 .cookie-preferences-btn {
     display: flex;
@@ -3057,18 +3042,10 @@ article[data-page] {
         flex: 1;
     }
 
-    .cookie-preferences-footer {
-        bottom: 10px;
-        left: 10px;
-    }
-
-    .cookie-preferences-btn {
-        font-size: 11px;
-        padding: 6px 10px;
-    }
-
     .cookie-consent {
-        padding-bottom: 70px;
+        bottom: 60px; /* sit above the mobile navbar */
+        padding-bottom: 20px;
+        border-radius: 12px 12px 0 0;
     }
 }
 
@@ -3084,6 +3061,7 @@ article[data-page] {
     
     .cookie-consent {
         padding: 15px;
+        bottom: 60px;
     }
 
     .cookie-header strong {

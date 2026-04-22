@@ -452,30 +452,22 @@ window.addEventListener('afterprint', function() {
 const cookieConsent = document.getElementById('cookieConsent');
 const acceptCookies = document.getElementById('acceptCookies');
 const declineCookies = document.getElementById('declineCookies');
-const cookiePreferencesBtn = document.getElementById('cookiePreferencesBtn');
-const cookiePrefFooter = document.getElementById('cookiePreferencesBtn')?.closest('.cookie-preferences-footer');
 
-// Check if user has already made a choice
+// Check if user has already made a choice — if so, never show banner again
 const cookieChoice = localStorage.getItem('cookieConsent');
 
 if (!cookieChoice) {
-    // Show banner after 1.5 seconds if no choice made
     setTimeout(() => {
         cookieConsent.classList.add('show');
     }, 1500);
-} else {
-    // Show the small preferences link only after user has already decided
-    if (cookiePrefFooter) cookiePrefFooter.classList.add('visible');
 }
 
-// If cookies were accepted, initialize analytics
 if (cookieChoice === 'accepted') {
     if (typeof initAnalytics === 'function') {
         initAnalytics();
     }
 }
 
-// Store consent timestamp for legal compliance
 function recordConsent(choice) {
     localStorage.setItem('cookieConsent', choice);
     localStorage.setItem('cookieConsentDate', new Date().toISOString());
@@ -484,52 +476,24 @@ function recordConsent(choice) {
 acceptCookies.addEventListener('click', function() {
     recordConsent('accepted');
     cookieConsent.classList.remove('show');
-    if (cookiePrefFooter) cookiePrefFooter.classList.add('visible');
 
-    // Initialize Google Analytics
     if (typeof initAnalytics === 'function') {
         initAnalytics();
     }
 
-    // Track consent
     if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-            'analytics_storage': 'granted'
-        });
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
     }
 });
 
 declineCookies.addEventListener('click', function() {
     recordConsent('declined');
     cookieConsent.classList.remove('show');
-    if (cookiePrefFooter) cookiePrefFooter.classList.add('visible');
 
-    // Disable analytics
     if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-            'analytics_storage': 'denied'
-        });
+        gtag('consent', 'update', { 'analytics_storage': 'denied' });
     }
 });
-
-// Cookie Preferences button - let users change their choice
-if (cookiePreferencesBtn) {
-    cookiePreferencesBtn.addEventListener('click', function() {
-        // Clear previous choice and show banner again
-        localStorage.removeItem('cookieConsent');
-        localStorage.removeItem('cookieConsentDate');
-        cookieConsent.classList.add('show');
-        if (cookiePrefFooter) cookiePrefFooter.classList.remove('visible');
-
-        // Disable analytics until new consent
-        window['ga-disable-G-61TSWEFZQL'] = true;
-        if (typeof gtag === 'function') {
-            gtag('consent', 'update', {
-                'analytics_storage': 'denied'
-            });
-        }
-    });
-}
 
 // Scroll to Top Button
 const scrollTop = document.getElementById('scrollTop');
