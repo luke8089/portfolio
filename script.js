@@ -439,6 +439,15 @@ window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
 
+// Set real navbar height as CSS variable so cookie banner clears it on mobile
+(function setNavbarHeight() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    const update = () => document.documentElement.style.setProperty('--navbar-height', navbar.offsetHeight + 'px');
+    update();
+    window.addEventListener('resize', update);
+})();
+
 // Print optimization
 window.addEventListener('beforeprint', function() {
     document.body.classList.add('printing');
@@ -453,19 +462,8 @@ const cookieConsent = document.getElementById('cookieConsent');
 const acceptCookies = document.getElementById('acceptCookies');
 const declineCookies = document.getElementById('declineCookies');
 
-// Check if user has already made a choice — if so, never show banner again
-const cookieChoice = localStorage.getItem('cookieConsent');
-
-if (!cookieChoice) {
-    setTimeout(() => {
-        cookieConsent.classList.add('show');
-    }, 1500);
-}
-
-if (cookieChoice === 'accepted') {
-    if (typeof initAnalytics === 'function') {
-        initAnalytics();
-    }
+function removeCookieBanner() {
+    if (cookieConsent) cookieConsent.remove();
 }
 
 function recordConsent(choice) {
@@ -473,27 +471,37 @@ function recordConsent(choice) {
     localStorage.setItem('cookieConsentDate', new Date().toISOString());
 }
 
-acceptCookies.addEventListener('click', function() {
-    recordConsent('accepted');
-    cookieConsent.classList.remove('show');
+const cookieChoice = localStorage.getItem('cookieConsent');
 
-    if (typeof initAnalytics === 'function') {
+if (cookieChoice) {
+    // Already decided — remove the element from the DOM immediately
+    removeCookieBanner();
+    if (cookieChoice === 'accepted' && typeof initAnalytics === 'function') {
         initAnalytics();
     }
+} else {
+    // First visit — show after a short delay
+    setTimeout(() => {
+        if (cookieConsent) cookieConsent.classList.add('show');
+    }, 1500);
+}
 
-    if (typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': 'granted' });
-    }
-});
+if (acceptCookies) {
+    acceptCookies.addEventListener('click', function() {
+        recordConsent('accepted');
+        removeCookieBanner();
+        if (typeof initAnalytics === 'function') initAnalytics();
+        if (typeof gtag === 'function') gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    });
+}
 
-declineCookies.addEventListener('click', function() {
-    recordConsent('declined');
-    cookieConsent.classList.remove('show');
-
-    if (typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': 'denied' });
-    }
-});
+if (declineCookies) {
+    declineCookies.addEventListener('click', function() {
+        recordConsent('declined');
+        removeCookieBanner();
+        if (typeof gtag === 'function') gtag('consent', 'update', { 'analytics_storage': 'denied' });
+    });
+}
 
 // Scroll to Top Button
 const scrollTop = document.getElementById('scrollTop');

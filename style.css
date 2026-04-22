@@ -3043,7 +3043,7 @@ article[data-page] {
     }
 
     .cookie-consent {
-        bottom: 60px; /* sit above the mobile navbar */
+        bottom: var(--navbar-height, 62px);
         padding-bottom: 20px;
         border-radius: 12px 12px 0 0;
     }
@@ -3061,7 +3061,7 @@ article[data-page] {
     
     .cookie-consent {
         padding: 15px;
-        bottom: 60px;
+        bottom: var(--navbar-height, 62px);
     }
 
     .cookie-header strong {
