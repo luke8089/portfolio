@@ -69,30 +69,29 @@
     <link rel="shortcut icon" type="image/jpeg" href="images/logo.jpg">
     
     <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="profile">
     <meta property="og:url" content="https://meiteikiniedwin.tech/">
     <meta property="og:title" content="Edwin Meiteikini | System Administrator & Full Stack Developer">
     <meta property="og:description" content="Professional System Administrator, Full Stack Developer, and ICT Support Specialist based in Nairobi, Kenya. Specializing in web development, system analysis, and IT infrastructure management.">
     <meta property="og:image" content="https://meiteikiniedwin.tech/images/logo.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Edwin Meiteikini - System Administrator and Full Stack Developer">
     <meta property="og:site_name" content="Edwin Meiteikini Portfolio">
     <meta property="og:locale" content="en_US">
-    
+    <meta property="profile:first_name" content="Edwin">
+    <meta property="profile:last_name" content="Meiteikini">
+    <meta property="profile:username" content="edwinmeiteikini">
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@edwinmeiteikini">
+    <meta name="twitter:creator" content="@edwinmeiteikini">
     <meta name="twitter:url" content="https://meiteikiniedwin.tech/">
     <meta name="twitter:title" content="Edwin Meiteikini | System Administrator & Full Stack Developer">
     <meta name="twitter:description" content="Professional System Administrator, Full Stack Developer, and ICT Support Specialist based in Nairobi, Kenya.">
     <meta name="twitter:image" content="https://meiteikiniedwin.tech/images/logo.jpg">
     <meta name="twitter:image:alt" content="Edwin Meiteikini - System Administrator and Developer">
-    <meta name="twitter:creator" content="@edwinmeiteikini">
-    
-    <!-- Additional Social Media Meta Tags -->
-    <meta property="og:type" content="profile">
-    <meta property="profile:first_name" content="Edwin">
-    <meta property="profile:last_name" content="Meiteikini">
-    <meta property="profile:username" content="edwinmeiteikini">
     
     <!-- Additional SEO Tags -->
     <meta name="rating" content="General">
@@ -176,7 +175,9 @@
         "IT Infrastructure Management"
       ],
       "sameAs": [
-        "https://meiteikiniedwin.tech"
+        "https://meiteikiniedwin.tech",
+        "https://github.com/luke8089",
+        "https://www.linkedin.com/in/edwin-meiteikini-6696a628b"
       ],
       "description": "Professional System Administrator, Full Stack Developer, and ICT Support Specialist based in Nairobi, Kenya. Specializing in web development, system analysis, network administration, and IT infrastructure management."
     }
@@ -322,6 +323,53 @@
     }
     </script>
     
+    <!-- ProfilePage Schema (Google 2023) — links this page to Edwin's identity -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "dateCreated": "2025-01-01",
+      "dateModified": "2026-04-22",
+      "url": "https://meiteikiniedwin.tech/",
+      "name": "Edwin Meiteikini — Portfolio",
+      "description": "Professional portfolio of Edwin Meiteikini, System Administrator, Full Stack Developer and ICT Support Specialist based in Nairobi, Kenya.",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Edwin Meiteikini",
+        "identifier": "edwinmeiteikini",
+        "url": "https://meiteikiniedwin.tech",
+        "image": "https://meiteikiniedwin.tech/images/logo.jpg",
+        "jobTitle": ["System Administrator", "Full Stack Developer", "ICT Support Specialist"],
+        "email": "edwinmeiteikini@gmail.com",
+        "telephone": "+254746075436",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressCountry": "Kenya"
+        },
+        "sameAs": [
+          "https://meiteikiniedwin.tech",
+          "https://github.com/luke8089",
+          "https://www.linkedin.com/in/edwin-meiteikini-6696a628b"
+        ]
+      }
+    }
+    </script>
+
+    <!-- Speakable Schema — marks content Google Assistant reads for voice search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "url": "https://meiteikiniedwin.tech/",
+      "name": "Edwin Meiteikini Portfolio",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".article-title", ".about-text", ".sidebar-info"]
+      }
+    }
+    </script>
+
     <!-- Google Analytics with Cookie Consent -->
     <!-- Google tag (gtag.js) - Only loads if cookies accepted -->
     <script id="analytics-script">
@@ -440,7 +488,7 @@
 
                 <ul class="social-list">
                     <li class="social-item"><a href="https://github.com/luke8089" class="social-link" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-github"></ion-icon></a></li>
-                    <li class="social-item"><a href="https://www.linkedin.com/in/edwin-meiteikini-6696a628b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                    <li class="social-item"><a href="https://www.linkedin.com/in/edwin-meiteikini-6696a628b" class="social-link" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-linkedin"></ion-icon></a></li>
                     <li class="social-item"><a href="mailto:edwinmeiteikini@gmail.com" class="social-link"><ion-icon name="mail-outline"></ion-icon></a></li>
                     <li class="social-item"><a href="https://wa.me/254751277637" class="social-link" target="_blank" rel="noopener noreferrer"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
                 </ul>
